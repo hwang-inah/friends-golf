@@ -1,3 +1,4 @@
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
 import { beforeAfterGallery } from '../../../../data/galleryData.js'

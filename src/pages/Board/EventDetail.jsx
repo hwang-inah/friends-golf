@@ -1,3 +1,4 @@
+import React from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { eventsData } from '../../data/eventsData.js'
 import styles from './EventDetail.module.css'

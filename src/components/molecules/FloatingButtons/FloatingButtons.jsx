@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import { FaPhoneAlt, FaArrowUp } from 'react-icons/fa'

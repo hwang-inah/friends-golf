@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import { beforeAfterGallery, normalGallery } from '../data/galleryData.js'
 import styles from './Gallery.module.css'

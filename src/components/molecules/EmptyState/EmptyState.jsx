@@ -1,3 +1,4 @@
+import React from 'react'
 import styles from './EmptyState.module.css'
 
 const EmptyState = ({ message = '페이지 준비 중입니다' }) => {

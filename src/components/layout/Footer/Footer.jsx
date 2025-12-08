@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaInstagram, FaBlog } from 'react-icons/fa'
 import { RiKakaoTalkFill } from 'react-icons/ri'
 import styles from './Footer.module.css'
