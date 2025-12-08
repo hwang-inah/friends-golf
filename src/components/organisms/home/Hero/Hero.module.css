@@ -1,0 +1,121 @@
+.hero {
+  position: relative;
+  width: 100vw;  /* 뷰포트 전체 너비 */
+  margin-left: calc(-50vw + 50%);  /* 부모 padding 무시 */
+  height: 100vh;
+  background-image: url('/images/facility/facility502.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  animation: fadeInUp 1s ease-out;
+}
+
+.subtitle {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0.5rem;
+  letter-spacing: 4px;
+  opacity: 0.9;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: orange;
+  border-radius: 10px;
+}
+
+.tagline {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 3rem;
+  opacity: 0.95;
+  animation: fadeInUp 1s ease-out 0.3s backwards;
+}
+
+.scrollBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  transition: all 0.3s;
+  animation: fadeInUp 1s ease-out 0.6s backwards, bounce 2s infinite;
+  margin: 0 auto;
+}
+
+.scrollBtn:hover {
+  transform: translateY(5px);
+}
+
+.scrollBtn svg {
+  width: 30px;
+  height: 30px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
+  }
+}

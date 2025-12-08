@@ -1,0 +1,31 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+}
+
+.empty {
+  text-align: center;
+  padding: 4rem;
+  background: #f5f5f5;
+  border-radius: 8px;
+  color: #666;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}

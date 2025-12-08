@@ -1,0 +1,13 @@
+/* 섹션 간격 */
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+/* 텍스트 유틸리티 */
+.text-center {
+  text-align: center;
+}
+
+.text-light {
+  color: var(--color-text-light);
+}
