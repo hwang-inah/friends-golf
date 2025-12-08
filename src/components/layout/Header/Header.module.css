@@ -51,6 +51,7 @@
 /* 각 버튼 */
 .navItem {
   padding: 0.5rem 0;  /* 상하 padding만 */
+  margin: 0 0.5rem;
   width: 140px;  /* 고정 너비 */
   text-align: center;  /* 중앙 정렬 */
   border: 1px solid transparent;
