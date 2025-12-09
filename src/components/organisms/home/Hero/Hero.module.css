@@ -110,7 +110,7 @@
 /* 모바일 수정 */
 @media (max-width: 768px) {
   .hero {
-    background-image: url('/images/facility/facility502-mobile.jpg');  /* 모바일용 이미지 */
+    background-image: url('/images/facility/facility502.jpg');  /* 모바일용 이미지 */
     background-attachment: scroll;  /* fixed → scroll 변경 , iOS 문제 해결 */
     min-height: 100vh;  /* height → min-height */
   }
