@@ -1,8 +1,8 @@
 import React from 'react'
-import EmptyState from '../components/molecules/EmptyState/EmptyState.jsx'
+import LocationContent from '../components/organisms/LocationContent/LocationContent.jsx'
 
 const Location = () => {
-  return <EmptyState />
+  return <LocationContent />
 }
 
 export default Location

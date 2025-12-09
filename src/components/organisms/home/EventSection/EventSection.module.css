@@ -11,34 +11,22 @@
   transform: translateY(0);
 }
 
-.container {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-
-.eventWrapper,
-.facilityWrapper {
-  width: 100%;
-}
-
-.sectionTitle {
+.title {
   text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
   color: #fff;
+  margin-bottom: 3rem;
 }
 
 /* ===== 이벤트 카드 ===== */
 .eventCard {
+  max-width: 800px;  /* ← 800px에서 600px로 축소 */
+  margin: 0 auto;
   position: relative;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  aspect-ratio: 16 / 9;  /* 비율 고정 */
+  aspect-ratio: 5 / 5;  /* 비율 고정 */
 }
 
 .eventImage {

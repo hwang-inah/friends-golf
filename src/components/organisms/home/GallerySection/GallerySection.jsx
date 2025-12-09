@@ -4,10 +4,14 @@ import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
 import { beforeAfterGallery } from '../../../../data/galleryData.js'
 import styles from './GallerySection.module.css'
 
-
 const GallerySection = () => {
   const navigate = useNavigate()
   const { isVisible, elementRef } = useScrollAnimation(0.2)
+
+  // 데이터 없으면 섹션 숨김
+  if (!beforeAfterGallery || beforeAfterGallery.length === 0) {
+    return null
+  }
 
   const recentItems = beforeAfterGallery.slice(0, 3)
   
