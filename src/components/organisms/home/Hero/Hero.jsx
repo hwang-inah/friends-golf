@@ -26,7 +26,7 @@ const Hero = () => {
       
       <div className={styles.content}>
         <h1 className={styles.title}>
-          프렌즈 프리미엄 골프연습장
+          프렌즈 프리미엄 <br className={styles.mobileBr} /> 골프연습장
           <span className={styles.subtitle}>신불당점</span>
         </h1>
         <p className={styles.tagline}>
