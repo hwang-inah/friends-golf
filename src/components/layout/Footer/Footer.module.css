@@ -50,6 +50,10 @@
   color: white;
 }
 
+.miniInfo {
+  font-weight: 600;
+}
+
 .bottom {
   display: flex;
   /* 아이콘을 중앙으로 정렬 */

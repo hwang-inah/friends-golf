@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #000;  /* 로딩 중 배경 */
+  overflow: hidden; /* 추가 */
 }
 
 .overlay {
@@ -113,6 +113,8 @@
     background-image: url('/images/facility/facility502.jpg');  /* 모바일용 이미지 */
     background-attachment: scroll;  /* fixed → scroll 변경 , iOS 문제 해결 */
     min-height: 100vh;  /* height → min-height */
+    height: 100dvh; /* dvh 사용 (dynamic viewport height) */
+    overflow: hidden; /* 확대 방지 */
   }
 
   .title {
@@ -126,18 +128,12 @@
   .tagline {
     font-size: 1.2rem;
   }
+
+  .mobileBr {
+    display: inline;
+  }
 }
 
 .mobileBr {
   display: none;
-}
-
-@media (max-width: 768px) {
-  .mobileBr {
-    display: block; /* 모바일에서만 줄바꿈 */
-  }
-
-  .title {
-    font-size: 2.5rem;
-  }
 }
