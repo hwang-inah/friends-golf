@@ -111,11 +111,11 @@
 
 @media (max-width: 768px) {
   .sliderWrapper {
-    height: 400px;
+    height: 300px; /* 고정 높이 */
   }
 
   .compactContainer .sliderWrapper {
-    height: auto;
+    height: 300px; /* 컴팩트도 고정 */
   }
 
   .slideCaption {

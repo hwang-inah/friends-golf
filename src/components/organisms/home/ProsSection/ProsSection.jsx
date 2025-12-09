@@ -1,31 +1,17 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { prosData } from '../../../../data/prosData.js'
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
 import styles from './ProsSection.module.css'
-
-const prosData = [
-  {
-    id: 1,
-    name: '대표 프로',
-    image: '/images/pros/Pro1.jpg'
-  },
-  {
-    id: 2,
-    name: '레슨 프로',
-    image: '/images/pros/Pro2.jpg'
-  },
-  {
-    id: 3,
-    name: '레슨 프로',
-    image: '/images/pros/Pro3.jpg'
-  }
-]
 
 const ProsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const { isVisible, elementRef } = useScrollAnimation(0.2)
   const navigate = useNavigate()
+
+  if (!prosData || prosData.length === 0) {
+    return null
+  }
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + prosData.length) % prosData.length)
@@ -46,7 +32,6 @@ const ProsSection = () => {
       ref={elementRef}
       className={`${styles.section} ${isVisible ? styles.visible : ''}`}
     >
-      
       <div className={styles.content}>
         <div className={styles.imageWrapper}>
           <button 
@@ -58,6 +43,7 @@ const ProsSection = () => {
           </button>
           
           <div className={styles.imageContainer} onClick={handleImageClick}>
+            {/* Pros 페이지와 동일한 이미지 경로 */}
             <img 
               src={currentPro.image} 
               alt={currentPro.name}
