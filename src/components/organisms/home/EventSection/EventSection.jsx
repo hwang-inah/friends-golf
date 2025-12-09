@@ -21,7 +21,7 @@ const EventSection = () => {
       ref={elementRef}
       className={`${styles.section} ${isVisible ? styles.visible : ''}`}
     >
-      <h2 className={styles.title}>이벤트 보러가기</h2>
+      <h2 className={styles.title}>▼ 이벤트 보러가기 ▼</h2>
       
       <div className={styles.eventCard} onClick={() => navigate(`/event/${latestEvent.id}`)}>
         <img 
