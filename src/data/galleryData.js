@@ -39,37 +39,19 @@ export const normalGallery = [
   {
     id: 1,
     image: '/images/Gallery/Gallery1.jpg',
-    title: '레슨사진01',
+    title: '레슨사진',
     date: '2024-12-05'
   },
   {
     id: 2,
     image: '/images/Gallery/Gallery2.jpg',
-    title: '레슨사진02',
+    title: '레슨사진',
     date: '2024-12-03'
   },
   {
     id: 3,
     image: '/images/Gallery/Gallery3.jpg',
-    title: '레슨사진03',
+    title: '레슨사진',
     date: '2024-11-28'
-  },
-  {
-    id: 4,
-    image: '/images/Gallery/Gallery1.jpg',
-    title: '레슨사진04',
-    date: '2024-11-20'
-  },
-  {
-    id: 5,
-    image: '/images/Gallery/Gallery2.jpg',
-    title: '레슨사진05',
-    date: '2024-11-15'
-  },
-  {
-    id: 6,
-    image: '/images/Gallery/Gallery3.jpg',
-    title: '레슨사진06',
-    date: '2024-11-10'
   }
 ]
