@@ -7,7 +7,6 @@ import styles from './EventSection.module.css'
 const EventSection = () => {
   const navigate = useNavigate()
   const { isVisible, elementRef } = useScrollAnimation(0.2)
-  const currentMonth = new Date().getMonth() + 1
   
   // 진행중인 최신 이벤트 1개
   const latestEvent = eventsData.find(e => e.status === 'active')
@@ -22,7 +21,7 @@ const EventSection = () => {
       ref={elementRef}
       className={`${styles.section} ${isVisible ? styles.visible : ''}`}
     >
-      <h2 className={styles.title}>{currentMonth}월 이벤트</h2>
+      <h2 className={styles.title}>이벤트 보러가기</h2>
       
       <div className={styles.eventCard} onClick={() => navigate(`/event/${latestEvent.id}`)}>
         <img 

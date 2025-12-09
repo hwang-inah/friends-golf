@@ -51,7 +51,6 @@
   cursor: pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 12px rgba(255, 235, 59, 0.4);
-  pointer-events: none;
   white-space: nowrap; /* 줄바꿈 방지 */
 }
 
