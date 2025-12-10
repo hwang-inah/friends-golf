@@ -1,12 +1,36 @@
 import React from 'react'
-import { prosData } from '../data/prosData.js'
+import { usePros } from '../hooks/usePros.js'
 import ProCard from '../components/organisms/ProCard/ProCard.jsx'
 import EmptyState from '../components/molecules/EmptyState/EmptyState.jsx'
 import styles from './Pros.module.css'
 
+// 로딩 상태 컴포넌트
+const LoadingSpinner = () => (
+  <div className={styles.loading}>데이터 로딩 중...</div>
+)
+
 const Pros = () => {
-  if (!prosData || prosData.length === 0) {
-    return <EmptyState />
+  const { pros, loading, error } = usePros()
+
+  if (loading) {
+    return (
+      <div className={styles.container}>
+        <h1 className={styles.pageTitle}>프로진 소개</h1>
+        <LoadingSpinner />
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <EmptyState
+        message={`데이터를 불러오는 중 오류가 발생했습니다: ${error.message}`}
+      />
+    )
+  }
+
+  if (!pros || pros.length === 0) {
+    return <EmptyState message="등록된 프로가 없습니다." />
   }
 
   return (
@@ -17,7 +41,7 @@ const Pros = () => {
       </p>
 
       <div className={styles.proList}>
-        {prosData.map((pro) => (
+        {pros.map((pro) => (
           <ProCard key={pro.id} pro={pro} />
         ))}
       </div>
