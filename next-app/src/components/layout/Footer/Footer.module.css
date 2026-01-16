@@ -1,0 +1,105 @@
+.footerWrapper {
+  background-color: #3a4a5a;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 6rem;
+  text-align: center;
+}
+
+.footer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 2rem 2rem;
+  color: white;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0 0 0.5rem 0;
+  color: white;
+}
+
+.companyInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.companyInfo p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.companyInfo strong {
+  color: white;
+}
+
+.bottom {
+  display: flex;
+  /* 아이콘을 중앙으로 정렬 */
+  justify-content: center;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.socialIcons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.socialIcons button {
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialIcons .instagram:hover {
+  color: palevioletred;
+  transform: translateY(-2px);
+}
+
+.socialIcons .blog:hover {
+  color: green;
+  transform: translateY(-2px);
+}
+
+.socialIcons .kakao:hover {
+  color: yellow;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+.miniInfo {
+  font-weight: 600;
+}

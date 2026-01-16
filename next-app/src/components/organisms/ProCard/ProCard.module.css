@@ -1,0 +1,172 @@
+/* ===== 메인 페이지 컴팩트 카드 ===== */
+.compactCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.compactCard:hover {
+  transform: scale(1.05);
+}
+
+.compactImageWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 120%; /* 3:4 비율 */
+}
+
+.compactImageWrapper img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compactOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  padding: 2rem 1.5rem;
+  color: white;
+}
+
+.compactName {
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+}
+
+.compactTitle {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.9));
+  color: #000;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ===== 페이지 전체 카드 ===== */
+.card {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 3rem;
+  background: #1a1a1a;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.imageSection {
+  width: 100%;
+}
+
+.imageSection img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  aspect-ratio: 3 / 4;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.name {
+  font-size: 2rem;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+}
+
+.title {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.9));
+  color: #000;
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.introduction {
+  font-size: 1.1rem;
+  color: #ccc;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.career h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  margin-bottom: 1rem;
+}
+
+.career ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.career li {
+  padding: 0.5rem 0;
+  color: #999;
+  font-size: 1rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.career li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #ffeb3b;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .imageSection img {
+    aspect-ratio: 3 / 4;
+    max-height: 400px;
+  }
+  
+  .name {
+    font-size: 1.5rem;
+  }
+  
+  .introduction {
+    font-size: 1rem;
+  }
+
+  .compactName {
+    font-size: 1.5rem;
+  }
+
+  .compactOverlay {
+    padding: 1.5rem 1rem;
+  }
+}

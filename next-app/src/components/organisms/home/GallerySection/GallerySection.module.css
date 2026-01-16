@@ -1,0 +1,148 @@
+.section {
+  padding: 6rem 2rem;
+  background-color: #000;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin: 0;
+}
+
+.moreBtn {
+  padding: 0.75rem 1.5rem;
+  background: white;
+  border: 2px solid var(--color-primary);
+  color: #333;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.moreBtn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.comparisonCard {
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.comparisonCard:hover {
+  transform: translateY(-10px);
+}
+
+.imageWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #333;
+}
+
+.beforeSection,
+.afterSection {
+  position: relative;
+  aspect-ratio: 3 / 4;  /* 세로형 비율 (스마트폰 비율) */
+  overflow: hidden;
+  background: #000;
+}
+
+.beforeSection img,
+.afterSection img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.comparisonCard:hover .beforeSection img,
+.comparisonCard:hover .afterSection img {
+  transform: scale(1.05);
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+
+.beforeSection .label {
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.9), rgba(60, 60, 60, 0.9));
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.afterSection .label {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.9));
+  color: #000;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+.description {
+  padding: 1.25rem;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .title {
+    font-size: 2rem;
+  }
+}
