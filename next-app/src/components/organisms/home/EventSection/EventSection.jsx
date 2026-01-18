@@ -1,20 +1,57 @@
 'use client'
 
-import React, { useMemo } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
-import { eventsData } from '../../../../data/eventsData.js'
+import { supabase } from '../../../../lib/supabase-client.js'
 import { getEventStatus } from '../../../../utils/event.js'
 import styles from './EventSection.module.css'
 
 const EventSection = () => {
   const router = useRouter()
   const { isVisible, elementRef } = useScrollAnimation(0.2)
+  const [events, setEvents] = useState([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('events')
+          .select('*')
+          .order('start_date', { ascending: false })
+
+        if (error) {
+          console.error('이벤트 불러오기 오류:', error)
+          setEvents([])
+        } else {
+          const formattedEvents = (data || []).map(event => ({
+            id: event.id,
+            title: event.title,
+            description: event.description,
+            image: event.image_url,
+            startDate: event.start_date,
+            endDate: event.end_date,
+          }))
+          setEvents(formattedEvents)
+        }
+      } catch (err) {
+        console.error('이벤트 불러오기 예외:', err)
+        setEvents([])
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchEvents()
+  }, [])
   
   // 날짜 기준으로 동적으로 이벤트 상태 계산하고 가장 최신 이벤트 선택
   // 진행중인 이벤트가 있으면 진행중 이벤트 중 최신, 없으면 종료된 이벤트 중 가장 최근 것 선택
   const latestEvent = useMemo(() => {
-    const eventsWithStatus = eventsData.map(event => ({
+    if (!events || events.length === 0) return null
+
+    const eventsWithStatus = events.map(event => ({
       ...event,
       status: getEventStatus(event.startDate, event.endDate)
     }))
@@ -34,10 +71,10 @@ const EventSection = () => {
     
     // 이벤트가 아예 없으면 모든 이벤트 중 종료일이 가장 최근인 것 선택
     return eventsWithStatus.sort((a, b) => new Date(b.endDate) - new Date(a.endDate))[0]
-  }, [])
+  }, [events])
 
-  // 이벤트가 없으면 섹션 숨김 (데이터 자체가 없는 경우만)
-  if (!latestEvent || eventsData.length === 0) {
+  // 로딩 중이거나 이벤트가 없으면 섹션 숨김
+  if (loading || !latestEvent) {
     return null
   }
 

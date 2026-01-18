@@ -1,0 +1,39 @@
+.filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.filterBtn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #444;
+  background: transparent;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.filterBtn:hover {
+  border-color: #666;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.filterBtn.active {
+  border-color: #fff;
+  background: #fff;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .filterBtn {
+    width: 100%;
+  }
+}

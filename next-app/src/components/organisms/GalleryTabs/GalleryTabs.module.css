@@ -1,0 +1,164 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 4rem;
+}
+
+.tab {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.tab:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.9));
+  color: #000;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+/* Before & After 그리드 */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.comparisonCard {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.comparisonCard:hover {
+  transform: translateY(-10px);
+}
+
+.imageWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: #333;
+}
+
+.beforeSection,
+.afterSection {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #000;
+}
+
+.beforeSection img,
+.afterSection img,
+.beforeSection .galleryImage,
+.afterSection .galleryImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  z-index: 1;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+}
+
+.beforeSection .label {
+  background: linear-gradient(135deg, rgba(100, 100, 100, 0.9), rgba(60, 60, 60, 0.9));
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.afterSection .label {
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.9), rgba(255, 193, 7, 0.9));
+  color: #000;
+  border-color: rgba(255, 255, 255, 0.3);
+  font-weight: 600;
+}
+
+/* 일반 갤러리 그리드 */
+.normalGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.normalCard {
+  background: #1a1a1a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s;
+}
+
+.normalCard:hover {
+  transform: translateY(-10px);
+}
+
+.normalCard img,
+.normalCard .galleryImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.cardInfo {
+  padding: 1.25rem;
+}
+
+.title {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+}
+
+.date {
+  color: #999;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.emptyMessage {
+  text-align: center;
+  padding: 4rem;
+  color: #666;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+  }
+
+  .grid,
+  .normalGrid {
+    grid-template-columns: 1fr;
+  }
+}
