@@ -18,25 +18,34 @@ const EventSection = () => {
       try {
         const { data, error } = await supabase
           .from('events')
-          .select('*')
+          .select('id, title, description, image, start_date, end_date, status')
           .order('start_date', { ascending: false })
 
         if (error) {
-          console.error('이벤트 불러오기 오류:', error)
+          console.error('[EventSection] 이벤트 불러오기 오류:', {
+            table: 'events',
+            error: error.message,
+            details: error.details,
+            hint: error.hint,
+          })
           setEvents([])
         } else {
           const formattedEvents = (data || []).map(event => ({
             id: event.id,
             title: event.title,
-            description: event.description,
-            image: event.image_url,
+            description: event.description || '',
+            image: event.image, // 실제 스키마: image
             startDate: event.start_date,
             endDate: event.end_date,
+            status: event.status || 'active', // nullable 방어 처리
           }))
           setEvents(formattedEvents)
         }
       } catch (err) {
-        console.error('이벤트 불러오기 예외:', err)
+        console.error('[EventSection] 이벤트 불러오기 예외:', {
+          error: err.message,
+          stack: err.stack,
+        })
         setEvents([])
       } finally {
         setLoading(false)

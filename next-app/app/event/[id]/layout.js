@@ -1,16 +1,7 @@
-import { getEvents, getEventById } from '../../../src/lib/supabase-data.js'
+import { getEventById } from '../../../src/lib/supabase-data.js'
 
 // 동적 렌더링: 데이터 변경 시 즉시 반영되도록 설정
 export const dynamic = 'force-dynamic'
-
-// 정적 생성 최적화: 빌드 시점에 모든 이벤트 페이지 생성
-// 동적 렌더링과 함께 사용하면 빌드 시점에 생성하되, 런타임에도 최신 데이터 사용
-export async function generateStaticParams() {
-  const events = await getEvents()
-  return events.map((event) => ({
-    id: event.id.toString(),
-  }))
-}
 
 export async function generateMetadata({ params }) {
   const { id } = await params
