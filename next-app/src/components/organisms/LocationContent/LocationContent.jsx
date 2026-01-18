@@ -7,9 +7,12 @@ const LocationContent = ({
   compact = false, 
   showParking = true, 
   showTitle = true, 
-  title = '오시는 길' 
+  title = '오시는 길',
+  kakaoReady = false,
+  kakaoFailed = false
 }) => {
   const mapContainer = useRef(null)
+  const initedRef = useRef(false)
   const [mapError, setMapError] = useState(false)
 
   // 인포윈도우 HTML
@@ -39,54 +42,59 @@ const LocationContent = ({
   }
 
   useEffect(() => {
-    const checkKakao = setInterval(() => {
-      if (window.kakao && window.kakao.maps) {
-        clearInterval(checkKakao)
-        
-        window.kakao.maps.load(() => {
-          try {
-            const lat = 36.8119742802678
-            const lng = 127.106924007786
-
-            const options = {
-              center: new window.kakao.maps.LatLng(lat, lng),
-              level: 3
-            }
-
-            const map = new window.kakao.maps.Map(mapContainer.current, options)
-
-            const markerPosition = new window.kakao.maps.LatLng(lat, lng)
-            const marker = new window.kakao.maps.Marker({
-              position: markerPosition
-            })
-            marker.setMap(map)
-
-            const infowindow = new window.kakao.maps.InfoWindow({
-              content: getInfoWindowContent()
-            })
-            infowindow.open(map, marker)
-
-          } catch (error) {
-            console.error('지도 생성 오류:', error)
-            setMapError(true)
-          }
-        })
-      }
-    }, 100)
-
-    const timeout = setTimeout(() => {
-      clearInterval(checkKakao)
-      if (!window.kakao || !window.kakao.maps) {
-        console.error('카카오맵 로드 타임아웃')
-        setMapError(true)
-      }
-    }, 10000)
-
-    return () => {
-      clearInterval(checkKakao)
-      clearTimeout(timeout)
+    // 스크립트 로드 실패 처리
+    if (kakaoFailed) {
+      setMapError(true)
+      return
     }
-  }, [])
+
+    // 카카오맵이 준비되지 않았거나 이미 초기화되었으면 리턴
+    if (!kakaoReady || initedRef.current || !mapContainer.current) {
+      return
+    }
+
+    // 중복 초기화 방지
+    if (typeof window === 'undefined' || !window.kakao || !window.kakao.maps) {
+      return
+    }
+
+    try {
+      // kakaoReady가 true일 때만 초기화
+      window.kakao.maps.load(() => {
+        // 중복 초기화 체크
+        if (initedRef.current || !mapContainer.current) {
+          return
+        }
+
+        const lat = 36.8119742802678
+        const lng = 127.106924007786
+
+        const options = {
+          center: new window.kakao.maps.LatLng(lat, lng),
+          level: 3
+        }
+
+        const map = new window.kakao.maps.Map(mapContainer.current, options)
+
+        const markerPosition = new window.kakao.maps.LatLng(lat, lng)
+        const marker = new window.kakao.maps.Marker({
+          position: markerPosition
+        })
+        marker.setMap(map)
+
+        const infowindow = new window.kakao.maps.InfoWindow({
+          content: getInfoWindowContent()
+        })
+        infowindow.open(map, marker)
+
+        // 초기화 완료 표시
+        initedRef.current = true
+      })
+    } catch (error) {
+      console.error('지도 생성 오류:', error)
+      setMapError(true)
+    }
+  }, [kakaoReady, kakaoFailed])
 
   return (
     <div className={compact ? styles.compactContainer : styles.container}>

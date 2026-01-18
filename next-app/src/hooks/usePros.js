@@ -1,6 +1,6 @@
 // src/hooks/usePros.js
 import { useState, useEffect } from 'react'
-import { supabase } from '../lib/supabase'
+import { supabase } from '../lib/supabase-client.js'
 
 // 프로진 목록을 Supabase에서 불러오는 공용 훅
 export const usePros = () => {
