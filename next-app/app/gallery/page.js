@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { beforeAfterGallery, normalGallery } from '../../src/data/galleryData.js'
+import { formatDate } from '../../src/utils/date.js'
 import EmptyState from '../../src/components/molecules/EmptyState/EmptyState.jsx'
 import styles from './Gallery.module.css'
 
@@ -49,7 +50,8 @@ export default function GalleryPage() {
                         alt="Before"
                         width={300}
                         height={300}
-                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                        style={{ objectFit: 'cover', width: '100%' }}
+                        className={styles.galleryImage}
                       />
                     </div>
                     <div className={styles.afterSection}>
@@ -59,13 +61,14 @@ export default function GalleryPage() {
                         alt="After"
                         width={300}
                         height={300}
-                        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                        style={{ objectFit: 'cover', width: '100%' }}
+                        className={styles.galleryImage}
                       />
                     </div>
                   </div>
                   <div className={styles.cardInfo}>
                     <p className={styles.title}>{item.title}</p>
-                    <p className={styles.date}>{item.date}</p>
+                    <p className={styles.date}>{formatDate(item.date)}</p>
                   </div>
                 </div>
               ))}
@@ -89,11 +92,12 @@ export default function GalleryPage() {
                     alt={item.title}
                     width={400}
                     height={400}
-                    style={{ objectFit: 'cover', width: '100%', height: '100%' }}
+                    style={{ objectFit: 'cover', width: '100%' }}
+                    className={styles.galleryImage}
                   />
                   <div className={styles.cardInfo}>
                     <p className={styles.title}>{item.title}</p>
-                    <p className={styles.date}>{item.date}</p>
+                    <p className={styles.date}>{formatDate(item.date)}</p>
                   </div>
                 </div>
               ))}

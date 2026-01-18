@@ -77,10 +77,13 @@
 }
 
 .beforeSection img,
-.afterSection img {
+.afterSection img,
+.beforeSection .galleryImage,
+.afterSection .galleryImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .label {
@@ -132,10 +135,12 @@
   transform: translateY(-10px);
 }
 
-.normalCard img {
+.normalCard img,
+.normalCard .galleryImage {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
 }
 
 .cardInfo {
