@@ -1,16 +1,20 @@
 'use client'
 
+import { use } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { eventsData } from '../../../src/data/eventsData.js'
+import { formatDate } from '../../../src/utils/date.js'
 import styles from '../EventDetail.module.css'
 
 export default function EventDetailPage({ params }) {
   const router = useRouter()
-  const id = params?.id
+  // Next.js 16에서 params는 Promise이므로 use()로 unwrap
+  const { id } = use(params)
   
-  const currentIndex = eventsData.findIndex(e => e.id === parseInt(id))
-  const event = eventsData[currentIndex]
+  // find()로 직접 이벤트 객체를 찾음 (더 안전함)
+  const eventId = parseInt(id)
+  const event = eventsData.find(e => e.id === eventId)
 
   if (!event) {
     return (
@@ -23,6 +27,8 @@ export default function EventDetailPage({ params }) {
     )
   }
 
+  // 이벤트를 찾은 후, 이전/다음 이벤트를 위해 인덱스 찾기
+  const currentIndex = eventsData.findIndex(e => e.id === eventId)
   const hasPrev = currentIndex > 0
   const hasNext = currentIndex < eventsData.length - 1
 
@@ -36,10 +42,6 @@ export default function EventDetailPage({ params }) {
     if (hasNext) {
       router.push(`/event/${eventsData[currentIndex + 1].id}`)
     }
-  }
-
-  const formatDate = (dateStr) => {
-    return dateStr.replace(/-/g, '.')
   }
 
   return (

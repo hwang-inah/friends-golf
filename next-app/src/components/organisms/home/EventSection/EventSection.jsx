@@ -10,8 +10,12 @@ const EventSection = () => {
   const router = useRouter()
   const { isVisible, elementRef } = useScrollAnimation(0.2)
   
-  // 진행중인 최신 이벤트 1개
-  const latestEvent = eventsData.find(e => e.status === 'active')
+  // 진행중인 이벤트 중에서 가장 최신 이벤트 선택
+  // 시작 날짜가 가장 최근인 것을 기준으로 선택
+  const activeEvents = eventsData.filter(e => e.status === 'active')
+  const latestEvent = activeEvents.length > 0 
+    ? activeEvents.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))[0]
+    : null
 
   // 이벤트 없으면 섹션 숨김
   if (!latestEvent) {

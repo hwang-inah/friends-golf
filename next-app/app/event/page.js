@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { eventsData } from '../../src/data/eventsData.js'
+import { formatDate } from '../../src/utils/date.js'
 import styles from './Event.module.css'
 
 export default function EventPage() {
@@ -14,10 +15,6 @@ export default function EventPage() {
     if (filter === 'all') return true
     return event.status === filter
   })
-
-  const formatDate = (dateStr) => {
-    return dateStr.replace(/-/g, '.')
-  }
 
   return (
     <div className={styles.container}>

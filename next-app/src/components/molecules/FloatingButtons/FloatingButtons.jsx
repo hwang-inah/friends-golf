@@ -21,7 +21,7 @@ const FloatingButtons = () => {
   }
 
   const handleKakaoClick = () => {
-    window.open('http://pf.kakao.com/your_channel', '_blank')
+    window.open('https://pf.kakao.com/_nlaxcn/chat', '_blank')
   }
 
   const handlePhoneClick = () => {

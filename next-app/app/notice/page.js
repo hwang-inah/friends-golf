@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Image from 'next/image'
 import { noticeData } from '../../src/data/noticeData.js'
+import { formatDate } from '../../src/utils/date.js'
 import EmptyState from '../../src/components/molecules/EmptyState/EmptyState.jsx'
 import styles from './Notice.module.css'
 
@@ -43,10 +44,6 @@ export default function NoticePage() {
     if (endPage < totalPages) {
       setCurrentPage(endPage + 1)
     }
-  }
-
-  const formatDate = (dateStr) => {
-    return dateStr.replace(/-/g, '.')
   }
 
   if (!showList) {

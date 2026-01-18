@@ -5,10 +5,16 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { usePros } from '../../../../hooks/usePros.js'
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
+import EmptyState from '../../../../components/molecules/EmptyState/EmptyState.jsx'
 import styles from './ProsSection.module.css'
 
-const ProsSection = () => {
-  const { pros, loading, error } = usePros()
+const ProsSection = ({ prosData }) => {
+  // props로 데이터를 받으면 props 사용, 없으면 훅 사용
+  const hookResult = usePros()
+  const pros = prosData || hookResult.pros
+  const loading = prosData ? false : hookResult.loading
+  const error = prosData ? null : hookResult.error
+  
   const [currentIndex, setCurrentIndex] = useState(0)
   const { isVisible, elementRef } = useScrollAnimation(0.2)
   const router = useRouter()
@@ -20,10 +26,16 @@ const ProsSection = () => {
     }
   }, [pros?.length])
 
-  // 에러 발생 시에만 숨김 (로딩 중에는 보여줌)
+  // 에러 발생 시 사용자에게 표시
   if (error) {
-    console.error('ProsSection error:', error)
-    return null
+    return (
+      <section 
+        ref={elementRef}
+        className={`${styles.section} ${isVisible ? styles.visible : ''}`}
+      >
+        <EmptyState message={`프로진 정보를 불러오는 중 오류가 발생했습니다: ${error}`} />
+      </section>
+    )
   }
 
   // 데이터가 없으면 숨김
