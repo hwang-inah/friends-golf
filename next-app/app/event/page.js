@@ -1,17 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { eventsData } from '../../src/data/eventsData.js'
 import { formatDate } from '../../src/utils/date.js'
+import { getEventStatus } from '../../src/utils/event.js'
 import styles from './Event.module.css'
 
 export default function EventPage() {
   const [filter, setFilter] = useState('all')
   const router = useRouter()
   
-  const filteredEvents = eventsData.filter(event => {
+  // 날짜 기준으로 동적으로 이벤트 상태 계산
+  const eventsWithStatus = useMemo(() => {
+    return eventsData.map(event => ({
+      ...event,
+      status: getEventStatus(event.startDate, event.endDate)
+    }))
+  }, [])
+  
+  const filteredEvents = eventsWithStatus.filter(event => {
     if (filter === 'all') return true
     return event.status === filter
   })

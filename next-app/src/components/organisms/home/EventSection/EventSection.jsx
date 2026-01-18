@@ -1,21 +1,30 @@
 'use client'
 
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useRouter } from 'next/navigation'
 import { useScrollAnimation } from '../../../../hooks/useScrollAnimation.js'
 import { eventsData } from '../../../../data/eventsData.js'
+import { getEventStatus } from '../../../../utils/event.js'
 import styles from './EventSection.module.css'
 
 const EventSection = () => {
   const router = useRouter()
   const { isVisible, elementRef } = useScrollAnimation(0.2)
   
-  // 진행중인 이벤트 중에서 가장 최신 이벤트 선택
-  // 시작 날짜가 가장 최근인 것을 기준으로 선택
-  const activeEvents = eventsData.filter(e => e.status === 'active')
-  const latestEvent = activeEvents.length > 0 
-    ? activeEvents.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))[0]
-    : null
+  // 날짜 기준으로 동적으로 이벤트 상태 계산하고 진행중인 이벤트 중 최신 선택
+  const latestEvent = useMemo(() => {
+    const eventsWithStatus = eventsData.map(event => ({
+      ...event,
+      status: getEventStatus(event.startDate, event.endDate)
+    }))
+    
+    // 진행중인 이벤트 중에서 가장 최신 이벤트 선택
+    // 시작 날짜가 가장 최근인 것을 기준으로 선택
+    const activeEvents = eventsWithStatus.filter(e => e.status === 'active')
+    return activeEvents.length > 0 
+      ? activeEvents.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))[0]
+      : null
+  }, [])
 
   // 이벤트 없으면 섹션 숨김
   if (!latestEvent) {
