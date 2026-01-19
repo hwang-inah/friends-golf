@@ -1,4 +1,5 @@
 import "./globals.css";
+import { KakaoMapProvider } from "../src/contexts/KakaoMapContext.jsx";
 import Header from "../src/components/layout/Header/Header.jsx";
 import Footer from "../src/components/layout/Footer/Footer.jsx";
 import FloatingButtons from "../src/components/molecules/FloatingButtons/FloatingButtons.jsx";
@@ -35,15 +36,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ko">
       <body>
-        <ScrollToTop />
-        <div className={styles.layout}>
-          <Header />
-          <main className={styles.main}>
-            {children}
-          </main>
-          <Footer />
-          <FloatingButtons />
-        </div>
+        <KakaoMapProvider>
+          <ScrollToTop />
+          <div className={styles.layout}>
+            <Header />
+            <main className={styles.main}>
+              {children}
+            </main>
+            <Footer />
+            <FloatingButtons />
+          </div>
+        </KakaoMapProvider>
       </body>
     </html>
   );
