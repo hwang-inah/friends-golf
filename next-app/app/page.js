@@ -1,22 +1,12 @@
-'use client'
+// Server Component: 서버에서 이벤트 데이터를 가져와서 클라이언트 컴포넌트에 전달
+import { getEvents } from '../src/lib/supabase-data.js'
+import HomeClient from '../src/components/organisms/home/HomeClient.jsx'
 
-import { KakaoMapProvider } from '../src/contexts/KakaoMapContext.jsx'
-import Hero from '../src/components/organisms/home/Hero/Hero.jsx'
-import FacilityLocationSection from '../src/components/organisms/home/FacilityLocationSection/FacilityLocationSection.jsx'
-import EventSection from '../src/components/organisms/home/EventSection/EventSection.jsx'
-import ProsSection from '../src/components/organisms/home/ProsSection/ProsSection.jsx'
-import GallerySection from '../src/components/organisms/home/GallerySection/GallerySection.jsx'
+export const dynamic = 'force-dynamic'
 
-export default function Page() {
-  return (
-    <KakaoMapProvider>
-      <div>
-        <Hero />
-        <FacilityLocationSection />
-        <ProsSection />
-        <EventSection />
-        <GallerySection />
-      </div>
-    </KakaoMapProvider>
-  )
+export default async function Page() {
+  // 서버에서 이벤트 데이터 가져오기
+  const events = await getEvents()
+
+  return <HomeClient events={events} />
 }
