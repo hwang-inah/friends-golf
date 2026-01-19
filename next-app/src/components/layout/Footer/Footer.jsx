@@ -10,7 +10,7 @@ const Footer = () => {
     const urls = {
       instagram: 'https://www.instagram.com/friendsgolf7366',
       blog: 'https://blog.naver.com/th_golf',
-      kakao: 'http://pf.kakao.com/your_channel'
+      kakao: 'https://pf.kakao.com/_nlaxcn'
     }
     window.open(urls[type], '_blank')
   }
