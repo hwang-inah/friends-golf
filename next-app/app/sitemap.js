@@ -1,7 +1,7 @@
 import { getEvents } from '../src/lib/supabase-data.js'
 
 export default async function sitemap() {
-  const baseUrl = 'https://friends-golf.com'
+  const baseUrl = 'https://friends-golf.vercel.app'
   
   // Supabase에서 이벤트 데이터 가져오기
   const events = await getEvents()

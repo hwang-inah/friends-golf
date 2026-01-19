@@ -22,7 +22,7 @@ const structuredData = {
     "name": "천안 신불당"
   },
   "sport": "Golf",
-  "url": "https://friends-golf.com"
+  "url": "https://friends-golf.vercel.app"
 }
 
 export default async function Page() {

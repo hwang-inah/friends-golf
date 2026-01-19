@@ -5,6 +5,6 @@ export default function robots() {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://friends-golf.com/sitemap.xml',
+    sitemap: 'https://friends-golf.vercel.app/sitemap.xml',
   }
 }

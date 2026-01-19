@@ -27,7 +27,7 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    url: "https://friends-golf.com",
+    url: "https://friends-golf.vercel.app",
     siteName: "프렌즈 프리미엄 골프연습장 신불당점",
     title: "천안 신불당 골프연습장 | 프렌즈 프리미엄 골프연습장 신불당점",
     description: "천안 신불당에 위치한 프렌즈 프리미엄 골프연습장으로, 골프연습·레슨이 가능한 스크린골프 시설입니다.",
