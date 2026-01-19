@@ -17,9 +17,9 @@ export default function HomeClient({ events = [] }) {
     <KakaoMapProvider>
       <div>
         <Hero />
+        <EventSectionClient events={events} />
         <FacilityLocationSection />
         <ProsSection />
-        <EventSectionClient events={events} />
         <GallerySection />
       </div>
     </KakaoMapProvider>
