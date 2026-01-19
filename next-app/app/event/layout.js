@@ -2,8 +2,8 @@
 export const dynamic = 'force-dynamic'
 
 export const metadata = {
-  title: "이벤트",
-  description: "프렌즈프리미엄 골프연습장 이벤트 및 프로모션 정보",
+  title: "이벤트 | 천안 신불당 골프연습장 – 프렌즈 프리미엄",
+  description: "천안 신불당 골프연습장 프렌즈 프리미엄의 이벤트 및 프로모션 정보",
 };
 
 export default function EventLayout({ children }) {
