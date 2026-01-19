@@ -21,6 +21,9 @@ export const metadata = {
     "신불당 골프",
     "프렌즈프리미엄",
   ],
+  verification: {
+    google: 'qmths5JAmxBIA_fHk5Nza_qO7DCt5qAvYXkDox6kDrM',
+  },
   openGraph: {
     type: "website",
     locale: "ko_KR",
